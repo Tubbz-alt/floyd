@@ -1,14 +1,37 @@
-G = [
-    [0, 133, float('inf'), float('inf'), float('inf')],
-    [133, 0, float('inf'), float('inf'), 64],
-    [float('inf'), float('inf'), 0, 64, 133],
-    [float('inf'), float('inf'), 64, 0, float('inf')],
-    [float('inf'), 64, 133, float('inf'), 0]
-]
+topo3 = [
+            [0, 133, float('inf'), 64, float('inf')],
+            [133, 0, float('inf'), float('inf'), 64],
+            [float('inf'), float('inf'), 0, 64, 133],
+            [64, float('inf'), 64, 0, float('inf')],
+            [float('inf'), 64, 133, float('inf'), 0]
+        ]
+
+topo1 = [
+            [0, 10, float('inf'), float('inf'), float('inf'), float('inf'), 64, 133, float('inf'),  float('inf')],
+            [10, 0, 10, float('inf'), float('inf'), 133, 133, float('inf'), float('inf'), float('inf')],
+            [float('inf'), 10, 0,  64, 64, float('inf'), float('inf'), float('inf'), float('inf'), float('inf')],
+            [float('inf'), float('inf'), 64, 0, 133, 10, float('inf'), float('inf'), float('inf'), float('inf')],
+            [float('inf'), float('inf'), 64, 133, 0, float('inf'), float('inf'), float('inf'), float('inf'), 10],
+            [ float('inf'), 133, float('inf'), 10, float('inf'), 0, 64, float('inf'), float('inf'), float('inf')],
+            [64, 133, float('inf'), float('inf'), float('inf'), 64, 0, 133, 64, float('inf')],
+            [133, float('inf'), float('inf'), float('inf'), float('inf'),  float('inf'), 133, 0, 64, float('inf')],
+            [float('inf'), float('inf'), float('inf'), float('inf'), float('inf'), float('inf'), 64, 133, 0, float('inf')],
+            [float('inf'), float('inf'), float('inf'),  float('inf'), 10, float('inf'), float('inf'), float('inf'), float('inf'), 0]
+         ]
+
+topo2 = [
+            [0, float('inf'), float('inf'), float('inf'), 64, 133,float('inf')],
+            [float('inf'), 0, float('inf'), float('inf'), 64, float('inf'), 133],
+            [float('inf'), float('inf'), 0, 133, float('inf'), 64, 10],
+            [float('inf'), float('inf'), 133, 0, float('inf'), float('inf'), 133],
+            [64, 64,float('inf'), float('inf'), 0, float('inf'), float('inf')],
+            [133, float('inf'), 64, float('inf'),float('inf'), 0, float('inf')],
+            [float('inf'), 133, 10, 133, float('inf'), float('inf'),  0]
+        ]
 
 
-def printGraf(G):
-    for row in (G):
+def printGraf(topo2):
+    for row in (topo2):
         print(row)
 
 
@@ -37,7 +60,7 @@ def floyd(G):
 
     for src in range(1, switch + 1):
         for dst in range(1, switch + 1):
-            print"shortest path from ", src, " to ", dst, ": ", Path(src - 1, dst - 1)
+            print"shortest path from ", src, " to ", dst, ": ", Path(src - 1, dst - 1),"cost: ",distance[src - 1][dst-1]
 
 
 def Path(src, dst):
@@ -51,7 +74,7 @@ def Path(src, dst):
 
 
 def main():
-    floyd(G)
+    floyd(topo2)
 
 
 if __name__ == "__main__":
